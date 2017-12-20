@@ -1,0 +1,234 @@
+@font-face {
+	font-family: "Minecraftia";
+	src: url('/fonts/Minecraftia2.ttf');
+}
+
+.floating-button {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin: 10px;
+	padding: 2px 10px;
+	background-color: #505050;
+	color: lime;
+	pointer-events: all;
+	font-size: 14pt;
+}
+
+.floating-button:hover {
+	background-color: #353535;
+	color: #00CC00;
+	cursor: pointer;
+}
+
+.typed-cursor{
+	opacity: 1;
+	-webkit-animation: blink 0.7s infinite;
+	-moz-animation: blink 0.7s infinite;
+	animation: blink 0.7s infinite;
+	color: lime;
+}
+.typed-cursor::selection {
+	color: lime;
+}
+@keyframes blink{
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes blink{
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@-moz-keyframes blink{
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.container {
+	position: relative;
+	margin: 50px;
+}
+
+body {
+	background-color: #282828;
+	font-size: 12pt !important;
+	line-height: 2;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	color: lime;
+	font-family: "Minecraftia", monospace;
+}
+
+p {
+	margin: 0 0 1em 0;
+}
+
+pre {
+	font-family: "Minecraftia", monospace;
+	margin: 0 0 1em 0;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+
+pre::-moz-selection {
+	color: #282828;
+	background-color: lime;
+}
+
+pre::selection {
+	color: #282828;
+	background-color: lime;
+}
+
+p::-moz-selection,
+ul > li::-moz-selection {
+	color: #282828;
+	background-color: lime;
+}
+
+p::selection,
+ul > li::selection {
+	color: #282828;
+	background-color: lime;
+}
+
+.prompt {
+	margin: 0;
+	color: #00CC00;
+}
+
+.prompt::-moz-selection {
+	color: #282828;
+	background-color: #00CC00;
+}
+
+.prompt::selection {
+	color: #282828;
+	background-color: #00CC00;
+}
+
+.command {
+	color: lime;
+}
+
+.command::selection {
+	color: #282828;
+	background-color: lime;
+}
+
+.command::-moz-selection {
+	color: #282828;
+	background-color: lime;
+}
+
+a {
+	color: inherit;
+}
+
+a:hover {
+	color: #00CC00;
+}
+
+a::-moz-selection {
+	color: #282828;
+	background-color: lime;
+	text-decoration: underline solid black;
+}
+
+a::selection {
+	color: #282828;
+	background-color: lime;
+	text-decoration: underline solid black;
+}
+
+b::-moz-selection {
+	color: #282828;
+	background-color: lime;
+}
+
+b::selection {
+	color: #282828;
+	background-color: lime;
+}
+
+i::-moz-selection {
+	color: #282828;
+	background-color: lime;
+}
+
+i::selection {
+	color: #282828;
+	background-color: lime;
+}
+
+ul {
+	padding: 0;
+	list-style: none;
+	indent: none;
+}
+
+ul, ul > li {
+	margin: 0;
+}
+
+ul > li::before {
+	content: '> ';
+}
+
+ul > li > a::before {
+	content: '';
+}
+
+ul > li:last-child {
+	margin: 0 0 1em 0;
+}
+
+.scanlines {
+	width: 135%;
+	height: 135%;
+	position: fixed;
+	left: -10%;
+	top: -10%;
+	pointer-events: none;
+	background: -webkit-repeating-linear-gradient(
+		top,
+		transparent 0px,
+		transparent 1px,
+		rgba(0,0,0,0.25) 1px,
+		rgba(0,0,0,0.25) 2px
+	);
+	-webkit-background-size: 100% 2px;
+	background: -moz-repeating-linear-gradient(
+		top,
+		transparent 0px,
+		transparent 1px,
+		rgba(0,0,0,0.25) 1px,
+		rgba(0,0,0,0.25) 2px
+	);
+	-moz-background-size: 100% 2px;
+}
