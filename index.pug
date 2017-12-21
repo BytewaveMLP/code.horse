@@ -1,0 +1,112 @@
+doctype html
+
+title Byte's Homepage
+
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
+meta(http-equiv='X-UA-Compatible', content='ie=edge')
+
+meta(name='robots', content='index, follow')
+meta(name='author', content='Bytewave')
+meta(name='description', content="Some nerd's corner of the internet.")
+meta(name='pubdate', content='2017-12-17')
+
+meta(property='og:type', content='website')
+meta(property='og:title', content="Byte's Homepage")
+meta(property='og:site_name', content='code.horse')
+meta(property='og:url', content='https://code.horse')
+meta(property='og:image', content='https://code.horse/img/bytewave-cm.png')
+meta(property='og:description', content="Some nerd's corner of the internet.")
+meta(property='article:published_time', content='2017-12-17')
+meta(property='article:author', content='https://code.horse')
+
+meta(name='twitter:card', content='summary')
+meta(name='twitter:site', content='@BytewaveMLP')
+meta(name='twitter:title', content="Byte's Homepage")
+meta(name='twitter:description', content="Some nerd's corner of the internet.")
+meta(name='twitter:image', content='https://code.horse/img/bytewave-cm.png')
+meta(name='twitter:image:alt', content="Byte's cutiemark")
+
+link(rel='apple-touch-icon', sizes='180x180', href='/apple-touch-icon.png?v=PY4kp4omXP')
+link(rel='icon', type='image/png', sizes='32x32', href='/favicon-32x32.png?v=PY4kp4omXP')
+link(rel='icon', type='image/png', sizes='16x16', href='/favicon-16x16.png?v=PY4kp4omXP')
+link(rel='manifest', href='/manifest.json?v=PY4kp4omXP')
+link(rel='mask-icon', href='/safari-pinned-tab.svg?v=PY4kp4omXP', color='#00cc32')
+link(rel='shortcut icon', href='/favicon.ico?v=PY4kp4omXP')
+
+meta(name='msapplication-TileColor', content='#00a300')
+meta(name='msapplication-TileImage', content='/mstile-144x144.png?v=PY4kp4omXP')
+meta(name='theme-color', content='#00cc32')
+
+link(rel='stylesheet', href='css/style.css')
+
+- var ps1 = "bw81@code.horse ~ % "
+
+mixin prompt(command)
+	.prompt
+		span.ps1 #{ps1}
+		span.command #{command}
+
+#command-line
+	+prompt('whoami')
+	.response
+		p Hey there! I'm Bytewave. I make things and break things.
+		p ... #[i Mostly] break things.
+	+prompt('ls')
+	.response: pre profiles.txt    projects.txt    license.txt
+	+prompt('cat profiles.txt')
+	.response
+		table
+			tr
+				td Discord
+				td @Bytewave#4055
+			tr
+				td Github
+				td: a(href='https://github.com/BytewaveMLP') BytewaveMLP
+			tr
+				td Keybase
+				td: a(href='https://keybase.io/bytewave') bytewave
+			tr
+				td KBFS
+				td: a(href='https://keybase.pub/bytewave') bytewave
+			tr
+				td reddit
+				td: a(href='https://reddit.com/u/scirc') /u/scirc
+			tr
+				td Steam
+				td: a(href='https://steamcommunity.com/profiles/76561198049105389') Bytewave
+			tr
+				td Twitter
+				td: a(href='https://twitter.com/BytewaveMLP') @BytewaveMLP
+			tr
+				td Ulysses Forums
+				td: a(href='http://forums.ulyssesmod.net/index.php?action=profile;u=6870') Bytewave
+		p Oh, yeah. I also help my friend #[a(href='https://alexandra.moe') Alex] with a little software group we call #[a(href='https://bookhorse.us') Book Horse Software]. :D
+	+prompt('cat projects.txt')
+	.response: table
+		tr
+			td: a(href='https://github.com/BytewaveMLP/sleeti') sleeti
+			td a file sharing website written in MVC PHP (uses Slim 3, Twig, and Eloquent) (find its story #[a(href='/sleeti.html') here]!)
+		tr
+			td: a(href='https://github.com/BytewaveMLP/SubCompare') SubCompare
+			td a small MVC PHP application to compare the subscriptions of two YouTube accounts using the YouTube Data API
+		tr
+			td: a(href='https://github.com/BookHorseSoftware/SteamGroupRewardsFramework') SGRF
+			td a Garry's Mod Steam group rewards toolkit for developers
+		tr
+			td: a(href='https://github.com/BytewaveMLP/randibooru') Randibooru
+			td a Discord bot experiment that pulls random images from #[a(href='https://derpibooru.org') Derpibooru]
+		tr
+			td: a(href='https://github.com/BytewaveMLP/Randibooru.js') Randibooru.js
+			td Randibooru, but in Node.js!
+		tr
+			td: a(href='https://github.com/BookHorseSoftware/Coolbooru') Coolbooru!
+			td a C# wrapper for the Derpibooru API
+	+prompt('cat license.txt')
+	.response: p Copyright © Eliot Partridge, 2016-17. Licensed under #[a(href='https://creativecommons.org/licenses/by/4.0/') CC 4.0].
+	+prompt('exit')
+	.response: p Connection to code.horse closed.
+#skip-button Skip to end
+#scan-lines
+
+script(src='js/script.js')

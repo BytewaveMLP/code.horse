@@ -1,0 +1,93 @@
+$foreground = #00ff00
+$background = #282828
+
+@keyframes cursor-blink
+	from
+		border-right : solid 1ch $foreground
+	50%
+		border-right : none
+
+@font-face
+	font-family : 'fixedsys'
+	src: url('https://cdn.jsdelivr.net/npm/fixedsys-css@0.0.5/fonts/fsex300-webfont.woff')
+
+*
+	font-size   : 15pt !important
+	font-family : "fixedsys", monospace
+	color : $foreground
+	background-color : $background
+	&::selection
+		color : $background
+		background-color : $foreground
+
+body
+	background-color : $background
+	line-height : 1.5
+	width  : 100%
+	height : 100%
+	margin : 0
+
+p, pre
+	margin : 0
+
+table
+	border-collapse : collapse
+	td
+		padding : 0 2ch 0 0
+		vertical-align : top
+		&:first-of-type
+			font-weight : bold
+			&::before
+				content : ">\00a0"
+
+a
+	&:hover
+		color : darken($foreground, 25%)
+
+#command-line
+	margin : 50px
+
+.prompt
+	margin-top  : 2em
+	line-height : 1
+	white-space : nowrap
+	display  : inline-block
+	overflow : hidden
+	&:first-child
+		margin-top : unset
+
+.ps1
+	color : darken($foreground, 25%)
+	&::selection
+		background-color : darken($foreground, 25%)
+
+.cursor
+	animation : cursor-blink 1s steps(1) infinite
+
+.hidden
+	display : none
+
+#skip-button
+	position  : fixed
+	bottom    : 10px
+	right     : 10px
+	padding   : 2px 10px
+	font-size : 1.2em
+	background-color : #505050
+	&:hover
+		cursor : pointer
+		filter : brightness(75%)
+
+#scan-lines
+	background : repeating-linear-gradient(
+		0deg,
+		transparent 0px,
+		transparent 1px,
+		rgba(#000, 0.25) 1px,
+		rgba(#000, 0.25) 2px)
+	position : fixed
+	left     : 0
+	top      : 0
+	width    : 100vw
+	height   : 100vh
+	pointer-events : none
