@@ -1,11 +1,34 @@
 // Welcome to callback hell!
 // Population: 0!
 
-let delayMul = 1;
+var run = true;
+
+var commandStrings = {
+	'#whoami': '',
+	'#ls-cmd': '',
+	'#cat-profiles': '',
+	'#cat-projects': '',
+	'#cat-license': '',
+	'#exit-cmd': '',
+};
+
+var defaultTypedOptions = {
+	startDelay: 2000,
+	typeSpeed: 50,
+	cursorChar: '&#x2588;',
+	preStringTyped: function() {
+		if (!run) return false;
+	},
+};
 
 $(function() {
 	$('.container').hide();
 	$('.start-hidden').hide();
+
+	for (var id in commandStrings) {
+		commandStrings[id] = $(id).html();
+		$(id).html('');
+	}
 	
 	$(document.body).css('background-color', 'black');
 
@@ -18,101 +41,103 @@ $(function() {
 
 		$('#skip-animation').fadeOut(250);
 
-		delayMul = 0;
+		for (var id in commandStrings) {
+			$(id).html(commandStrings[id]);
+		}
+
+		$('.start-hidden').show();
+		$('.typed-cursor').hide();
+
+		run = false;
 
 		return false;
 	});
 });
 
 function showDesc() {
-	$('.container').fadeIn(250 * delayMul, function() {
+	$('.container').fadeIn(250, function() {
 		$('#skip-animation').fadeIn(250);
 
-		$('#whoami').typed({
-			strings: ['whoami'],
-			startDelay: 500 * delayMul,
-			typeSpeed: 50 * delayMul,
-			cursorChar: '&#x2588;',
+		if (!run) return;
+
+		$('#whoami').typed(jQuery.extend({}, defaultTypedOptions, {
+			strings: [commandStrings['#whoami']],
+			startDelay: 500,
 			callback: function() {
 				$('.typed-cursor').hide();
-				$('#desc').delay(500 * delayMul).fadeIn(250 * delayMul, showLs);
+				$('#desc').delay(500).fadeIn(250, showLs);
 			}
-		});
+		}));
 	});
 }
 
 function showLs() {
-	$('#ls-prompt').delay(500 * delayMul).fadeIn(250 * delayMul, function() {
-		$('#ls-cmd').typed({
-			strings: ['ls'],
-			startDelay: 2000 * delayMul,
-			typeSpeed: 50 * delayMul,
-			cursorChar: '&#x2588;',
+	if (!run) return;
+
+	$('#ls-prompt').delay(500).fadeIn(250, function() {
+		$('#ls-cmd').typed(jQuery.extend({}, defaultTypedOptions, {
+			strings: [commandStrings['#ls-cmd']],
 			callback: function() {
-				$('.typed-cursor').delay(500 * delayMul).hide();
-				$('#ls').delay(500 * delayMul).fadeIn(250 * delayMul, showProfiles);
+				$('.typed-cursor').delay(500).hide();
+				$('#ls').delay(500).fadeIn(250, showProfiles);
 			}
-		});
+		}));
 	});
 }
 
 function showProfiles() {
-	$('#profiles-prompt').delay(500 * delayMul).fadeIn(250 * delayMul, function() {
-		$('#cat-profiles').typed({
-			strings: ['cat profiles.txt'],
-			startDelay: 2000 * delayMul,
-			typeSpeed: 50 * delayMul,
-			cursorChar: '&#x2588;',
+	if (!run) return;
+
+	$('#profiles-prompt').delay(500).fadeIn(250, function() {
+		$('#cat-profiles').typed(jQuery.extend({}, defaultTypedOptions, {
+			strings: [commandStrings['#cat-profiles']],
 			callback: function() {
-				$('.typed-cursor').delay(500 * delayMul).hide();
-				$('#profiles').delay(500 * delayMul).fadeIn(250 * delayMul, showProjects);
+				$('.typed-cursor').delay(500).hide();
+				$('#profiles').delay(500).fadeIn(250, showProjects);
 			}
-		});
+		}));
 	});
 }
 
 function showProjects() {
-	$('#projects-prompt').delay(500 * delayMul).fadeIn(250 * delayMul, function() {
-		$('#cat-projects').typed({
-			strings: ['cat projects.txt'],
-			startDelay: 2000 * delayMul,
-			typeSpeed: 50 * delayMul,
-			cursorChar: '&#x2588;',
+	if (!run) return;
+
+	$('#projects-prompt').delay(500).fadeIn(250, function() {
+		$('#cat-projects').typed(jQuery.extend({}, defaultTypedOptions, {
+			strings: [commandStrings['#cat-projects']],
 			callback: function() {
-				$('.typed-cursor').delay(500 * delayMul).hide();
-				$('#projects').delay(500 * delayMul).fadeIn(250 * delayMul, showLicense);
+				$('.typed-cursor').delay(500).hide();
+				$('#projects').delay(500).fadeIn(250, showLicense);
 			}
-		});
+		}));
 	});
 }
 
 function showLicense() {
-	$('#license-prompt').delay(500 * delayMul).fadeIn(250 * delayMul, function() {
-		$('#cat-license').typed({
-			strings: ['cat license.txt'],
-			startDelay: 2000 * delayMul,
-			typeSpeed: 50 * delayMul,
-			cursorChar: '&#x2588;',
+	if (!run) return;
+
+	$('#license-prompt').delay(500).fadeIn(250, function() {
+		$('#cat-license').typed(jQuery.extend({}, defaultTypedOptions, {
+			strings: [commandStrings['#cat-license']],
 			callback: function() {
-				$('.typed-cursor').delay(500 * delayMul).hide();
-				$('#license').fadeIn(250 * delayMul, showExit);
+				$('.typed-cursor').delay(500).hide();
+				$('#license').fadeIn(250, showExit);
 			}
-		});
+		}));
 	});
 }
 
 function showExit() {
+	if (!run) return;
+
 	$('#skip-animation').fadeOut(250);
-	$('#exit-prompt').delay(500 * delayMul).fadeIn(250 * delayMul, function() {
-		$('#exit-cmd').typed({
-			strings: ['exit'],
-			startDelay: 2000 * delayMul,
-			typeSpeed: 50 * delayMul,
-			cursorChar: '&#x2588;',
+	$('#exit-prompt').delay(500).fadeIn(250, function() {
+		$('#exit-cmd').typed(jQuery.extend({}, defaultTypedOptions, {
+			strings: [commandStrings['#exit-cmd']],
 			callback: function() {
-				$('.typed-cursor').delay(500 * delayMul).hide();
-				$('#exit').fadeIn(250 * delayMul);
+				$('.typed-cursor').delay(500).hide();
+				$('#exit').fadeIn(250);
 			}
-		});
+		}));
 	});
 }

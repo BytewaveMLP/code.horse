@@ -1,37 +1,40 @@
 @font-face {
-	font-family: "Minecraftia";
-	src: url('/fonts/Minecraftia2.ttf');
+	font-family: "Fixedsys";
+	src: url('../fonts/fixedsys.ttf');
 }
 
 .floating-button {
 	position: fixed;
 	bottom: 0;
 	right: 0;
-	margin: 10px;
-	padding: 2px 10px;
-	background-color: #505050;
+	margin: 0.5em;
+	padding: 0.5em;
+	background-color: #50505050;
 	color: lime;
 	pointer-events: all;
-	font-size: 14pt;
+	font-size: 1.5em;
+	line-height: 1;
 }
 
 .floating-button:hover {
-	background-color: #353535;
+	background-color: #35353550;
 	color: #00CC00;
 	cursor: pointer;
 }
 
-.typed-cursor{
+.typed-cursor {
 	opacity: 1;
 	-webkit-animation: blink 0.7s infinite;
 	-moz-animation: blink 0.7s infinite;
 	animation: blink 0.7s infinite;
 	color: lime;
 }
+
 .typed-cursor::selection {
 	color: lime;
 }
-@keyframes blink{
+
+@keyframes blink {
 	0% {
 		opacity: 1;
 	}
@@ -42,7 +45,7 @@
 		opacity: 1;
 	}
 }
-@-webkit-keyframes blink{
+@-webkit-keyframes blink {
 	0% {
 		opacity: 1;
 	}
@@ -53,7 +56,7 @@
 		opacity: 1;
 	}
 }
-@-moz-keyframes blink{
+@-moz-keyframes blink {
 	0% {
 		opacity: 1;
 	}
@@ -72,22 +75,22 @@
 
 body {
 	background-color: #282828;
-	font-size: 12pt !important;
-	line-height: 2;
+	font-size: 1.25em !important;
+	line-height: 2.0;
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	color: lime;
-	font-family: "Minecraftia", monospace;
+	font-family: "Fixedsys", monospace;
 }
 
 p {
-	margin: 0 0 1em 0;
+	margin: 0;
 }
 
 pre {
-	font-family: "Minecraftia", monospace;
-	margin: 0 0 1em 0;
+	font-family: "Fixedsys", monospace;
+	margin: 0;
 	white-space: pre-wrap;
 	white-space: -moz-pre-wrap;
 	white-space: -pre-wrap;
@@ -202,10 +205,6 @@ ul > li::before {
 
 ul > li > a::before {
 	content: '';
-}
-
-ul > li:last-child {
-	margin: 0 0 1em 0;
 }
 
 .scanlines {

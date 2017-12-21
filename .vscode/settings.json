@@ -1,0 +1,11 @@
+{
+	"files.exclude": {
+		"android*.png": true,
+		"apple-touch-icon*.png": true,
+		"favicon*": true,
+		"mstile-*.png": true,
+		"browserconfig.xml": true,
+		"manifest.json": true,
+		"safari-pinned-tab.svg": true
+	}
+}
