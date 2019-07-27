@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Pony Town has been down for...</title>
+
+		<meta name="robots" content="index, follow">
+		<meta name="author" content="Bytewave">
+		<meta name="description" content="A countup timer totalling the amount of time Pony Town has been down since the outage on Dec 23, 2018.">
+		<meta name="pubdate" content="2018-12-23">
+
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Pony Town has been down for...">
+		<meta property="og:site_name" content="code.horse">
+		<meta property="og:url" content="https://code.horse">
+		<meta property="og:image" content="https://code.horse/img/bytewave-cm.png">
+		<meta property="og:description" content="A countup timer totalling the amount of time Pony Town has been down since the outage on Dec 23, 2018.">
+
+		<meta property="article:published_time" content="2018-12-23">
+		<meta property="article:author" content="https://code.horse">
+
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@BytewaveMLP">
+		<meta name="twitter:title" content="Pony Town has been down for...">
+		<meta name="twitter:description" content="A countup timer totalling the amount of time Pony Town has been down since the outage on Dec 23, 2018.">
+		<meta name="twitter:image" content="https://code.horse/img/bytewave-cm.png">
+		<meta name="twitter:image:alt" content="Byte's cutiemark">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=PY4kp4omXP">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=PY4kp4omXP">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=PY4kp4omXP">
+		<link rel="manifest" href="/manifest.json?v=PY4kp4omXP">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg?v=PY4kp4omXP" color="#00cc32">
+		<link rel="shortcut icon" href="/favicon.ico?v=PY4kp4omXP">
+		<meta name="msapplication-TileColor" content="#00a300">
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=PY4kp4omXP">
+		<meta name="theme-color" content="#e6c966">
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+		<link rel="stylesheet" href="/css/style-pt.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="inner">
+				<h1>Pony Town was down for</h1>
+
+				<p>
+					<span id="days"><b>??</b> days</span>, <span id="hours"><b>??</b> hours</span>, <span id="mins"><b>??</b> minutes</span>, and <span id="secs"><b>??</b> seconds</span>
+				</p>
+
+				<p>
+					<small>Outage started on <time id="start" datetime="2018-12-23T03:50:18-0600">December 23rd, 2018 3:50 AM CST</time> and ended <time id="end" datetime="2018-12-26T10:54:03-0600">December 26th, 2018 10:54 AM CST</time></small>
+				</p>
+			</div>
+		</div>
+
+		<footer class="footer">
+			Page created by <a href="https://code.horse">Bytewave</a> &mdash; Read more about the outage <a href="https://redd.it/a8vth1">here</a>
+		</footer>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
+		<script>
+			window.onload = function() {
+				var timeStart = document.getElementById('start').getAttribute('datetime');
+				var timeEnd = document.getElementById('end').getAttribute('datetime');
+				countUp(timeStart, timeEnd);
+			}
+
+			function countUp(dateStart, dateEnd) {
+				var cur = Date.parse(dateEnd)
+				var start = Date.parse(dateStart);
+
+				var difference = cur - start;
+
+				var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+				var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var mins = Math.floor((difference % (1000 * 60 * 60 * 24) % (1000 * 60 * 60)) / (1000 * 60));
+				var secs = Math.floor((difference % (1000 * 60 * 60 * 24) % (1000 * 60 * 60) % (1000 * 60)) / 1000);
+
+				document.getElementById('days').innerHTML = `<b>${days}</b> day${days != 1 ? 's' : ''}`;
+				document.getElementById('hours').innerHTML = `<b>${hours}</b> hour${hours != 1 ? 's' : ''}`;
+				document.getElementById('mins').innerHTML = `<b>${mins}</b> minute${mins != 1 ? 's' : ''}`;
+				document.getElementById('secs').innerHTML = `<b>${secs}</b> second${secs != 1 ? 's' : ''}`;
+			}
+		</script>
+	</body>
+</html>
